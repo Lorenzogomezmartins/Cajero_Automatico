@@ -20,10 +20,23 @@ public class DispensadorDeBilletes {
         this.billetes = new HashMap<Billete, Integer>();
         
     }
+    /**
+     * Método para reabastecer billetes en el dispensador.
+     * 
+     * @param billete El billete a reabastecer.
+     * @param cantidad La cantidad de billetes a agregar.
+     */
     public void reabastecerBilletes(Billete billete, int cantidad){
         this.billetes.put(billete, cantidad);
 
     }
+    
+    /**
+     * Método para retirar un monto específico de dinero.
+     * 
+     * @param monto El monto a retirar.
+     * @return Un mapa que contiene los billetes dispensados y su cantidad, o null si no se puede dispensar el monto.
+     */
     public Map<Billete, Integer> retirar(int monto){
         Map<Billete, Integer> resultado = new HashMap<>(); 
         int restante = monto;
@@ -59,6 +72,12 @@ public class DispensadorDeBilletes {
         return resultado; 
     }
     
+    /**
+     * Método para verificar si hay billetes disponibles para un monto específico.
+     * 
+     * @param monto El monto a verificar.
+     * @return true si hay suficientes billetes disponibles, false en caso contrario.
+     */
      public boolean tieneBilletesDisponibles(int monto) {
         int restante = monto;
 
@@ -77,7 +96,12 @@ public class DispensadorDeBilletes {
 
         return restante == 0;
     }
-    
+     
+    /**
+     * Método para dispensar billetes para un monto específico.
+     * 
+     * @param monto El monto a dispensar.
+     */
      public void dispensarBilletes(int monto) {
         Map<Billete, Integer> resultado = retirar(monto);
         if (resultado != null) {

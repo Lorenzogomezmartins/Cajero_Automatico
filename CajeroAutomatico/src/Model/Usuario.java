@@ -20,6 +20,15 @@ public class Usuario {
         this.tarjeta = tarjeta;
     }
     
+    /**
+     * Método para autenticar al usuario.
+     * Verifica que el número de la tarjeta y el PIN proporcionados
+     * coincidan con los datos del usuario.
+     *
+     * @param nroTarjeta El número de la tarjeta de débito a verificar.
+     * @param pin El PIN ingresado para autenticación.
+     * @return true si la autenticación es exitosa, false en caso contrario.
+     */
     public boolean autenticar(String nroTarjeta, String pin) {
     return this.tarjeta.getNroTarjeta().equals(nroTarjeta) && this.pin.equals(pin);
 }

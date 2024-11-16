@@ -24,7 +24,11 @@ public class CajeroAutomatico {
     }
     
     
-    
+    /**
+     * Método para autenticar al usuario ingresando número de tarjeta y PIN.
+     * 
+     * @return true si la autenticación es exitosa, false en caso contrario.
+     */
     public  boolean autentificar(){
         Scanner scanner = new Scanner(System.in);
         System.out.print("Ingrese su número de tarjeta: ");
@@ -46,6 +50,9 @@ public class CajeroAutomatico {
 
     }
     
+    /**
+     * Método para mostrar el saldo de la cuenta del usuario autenticado.
+     */
     public void mostrarSaldo(){
         if (usuarioAutenticado == null) {
         System.out.println("Debe autenticarse primero.");
@@ -56,6 +63,11 @@ public class CajeroAutomatico {
 
     } 
     
+    /**
+     * Método para retirar efectivo de la cuenta del usuario autenticado.
+     * 
+     * @param cantidad la cantidad de dinero a retirar.
+     */
     public  void retirarEfectivo(int cantidad){
         if (usuarioAutenticado == null) {
         System.out.println("Debe autenticarse primero.");
@@ -63,25 +75,15 @@ public class CajeroAutomatico {
     }
 
     Cuenta cuenta = usuarioAutenticado.getCuenta();
-    if (cuenta != null && cuenta.getSaldo() >= cantidad) {
-        // Verificamos si el dispensador tiene billetes suficientes para el retiro
-        Map<Billete, Integer> billetesRetirados = dispensador.retirar(cantidad); // Cambié el método a 'retirar'
-        
-        if (billetesRetirados != null) {
-            // Si el dispensador tiene los billetes, realizamos el retiro
-            cuenta.retiro(cantidad);  // Actualizamos el saldo de la cuenta
-
-            // Crear una nueva transacción de tipo Retiro
-            Retiro transaccion = new Retiro(cantidad, usuarioAutenticado.getTarjeta().getNroTarjeta(), true);
-            historial.agregarTransaccion(transaccion);  // Agregamos la transacción al historial
-
-            System.out.println("Retiro de " + cantidad + " realizado con éxito.");
+    if (cuenta != null) {
+        boolean exito = cuenta.retiro(cantidad);  // Llama al método retiro()
+        if (exito) {
+            System.out.println("Retiro de " + cantidad + " realizado con éxito. Saldo actual: " + cuenta.getSaldo());
         } else {
-            // Si no tiene billetes suficientes
-            System.out.println("Fondos insuficientes en el dispensador o no se puede hacer el cambio solicitado.");
+            System.out.println("No se pudo realizar el retiro. Saldo insuficiente.");
         }
     } else {
-        System.out.println("Fondos insuficientes en la cuenta.");
+        System.out.println("Error: la cuenta no está asociada al usuario.");
     }
- }
+}
 }

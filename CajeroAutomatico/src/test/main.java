@@ -31,14 +31,18 @@ public class main {
         Tarjeta tarjeta1 = new Tarjeta("1234567890123456", "Banco Central");
 
         // Crear la cuenta
-        Cuenta cuenta1 = new Cuenta("Banco Ejemplo", "001", 1000.0, null);  // Inicializa la cuenta sin usuario aún
+        Cuenta cuenta1 = new Cuenta("Banco Ejemplo", "001", 20000.0, null);  // Inicializa la cuenta sin usuario aún
 
         // Crear el usuario, asignándole la cuenta y la tarjeta
         Usuario usuario1 = new Usuario("1234", cuenta1, tarjeta1);
 
+        
         // Agregar la cuenta al banco
         banco.agregarCuenta(cuenta1);
-        
+        cuenta1.setUsuario(usuario1);  // Asociar usuario a la cuenta
+
+    // Agregar la cuenta al banco
+    banco.agregarCuenta(cuenta1);
         Scanner scanner = new Scanner(System.in);
         int opcion = 0;
         

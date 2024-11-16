@@ -19,10 +19,20 @@ public class HistorialDeTransacciones {
         this.historial = new ArrayList<Transaccion>();
     }
     
+    /**
+     * Método para agregar una transacción al historial.
+     * 
+     * @param transaccion La transacción a agregar al historial.
+     */
     public void agregarTransaccion(Transaccion transaccion){
         this.historial.add(transaccion);
     }
 
+    /**
+     * Método para mostrar todas las transacciones en el historial.
+     * 
+     * @return La lista de transacciones almacenadas en el historial.
+     */
     public List<Transaccion> mostrarTransacciones() {
         return historial;
     }
