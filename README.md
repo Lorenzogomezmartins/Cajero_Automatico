@@ -1,8 +1,5 @@
 
 <h1 align="center">Trabajo Cajero Automatico</h1>
-<h3 align="center">Colaboradores</h3>
-<h3 align="center">Nicolas Culetto , Santino Fernandez, Lorenzo Gomez Martins, Franco Gil, Mateo Gigy Traynor y Hernan Potenza</h3>
-
 
 <div align="center">
   <img src="https://techstack-generator.vercel.app/java-icon.svg" alt="icon" width="50" height="50" />
